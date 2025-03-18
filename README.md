@@ -1,1 +1,1 @@
-# npl
+# Nonlinear Power Allocation Algorithm
