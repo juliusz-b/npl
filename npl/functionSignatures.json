@@ -1,0 +1,16 @@
+{
+  "_schemaVersion": "1.0.0",
+  "npl":
+  {
+     "inputs":
+     [
+        {"name":"G", "kind":"required", "type":["numeric"], "purpose":"Channel linear response"},
+        {"name":"N0", "kind":"required", "type":["numeric"], "purpose":"Noise spectral density"},
+        {"name":"gamma", "kind":"required", "type":["numeric"], "purpose":"LED nonlinearity coefficient"},
+        {"name":"S", "kind":"required", "type":["numeric"], "purpose":"Nonlinear distortion power spectral distribution"},
+        {"name":"N", "kind":"required", "type":["numeric"], "purpose":"Number of subcarriers"},
+        {"name":"M", "kind":"required", "type":["numeric"], "purpose":"Average power multiplier"},
+        {"name":"Delta", "kind":"required", "type":["numeric"], "purpose":"Power increment step size"}
+     ]
+  }
+}
