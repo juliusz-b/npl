@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Nonlinear Power Loading Algorithm
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Grzegorz
+    family-names: Stepniak
+    email: grzegorz.stepniak@pw.edu.pl
+    affiliation: Warsaw University of Technology
+    orcid: 'https://orcid.org/0000-0002-5765-3657'
+  - given-names: Juliusz
+    family-names: Bojarczuk
+    email: juliusz.bojarczuk@pw.edu.pl
+    affiliation: Warsaw University of Technology
+    orcid: 'https://orcid.org/0000-0001-7130-9775'
+  - given-names: Jakub
+    family-names: Kasjanowicz
+    email: jakub.kasjanowicz.stud@pw.edu.pl
+    affiliation: Warsaw University of Technology
+license: LGPL-3.0
