@@ -22,4 +22,7 @@ authors:
     family-names: Kasjanowicz
     email: jakub.kasjanowicz.stud@pw.edu.pl
     affiliation: Warsaw University of Technology
+identifiers:
+  - type: url
+    value: 'https://github.com/juliusz-b/npl'
 license: LGPL-3.0
