@@ -1,0 +1,13 @@
+{
+    "_schemaVersion": "1.0.0",
+    "npl_opt": {
+        "inputs": [
+            {"name": "G", "kind": "required", "type": ["numeric", "vector"], "purpose": "Channel linear response"},
+            {"name": "N0", "kind": "required", "type": ["numeric", "scalar"], "purpose": "Noise spectral density"},
+            {"name": "gamma", "kind": "required", "type": ["numeric", "scalar"], "purpose": "LED nonlinearity coefficient"},
+            {"name": "S", "kind": "required", "type": ["numeric", "vector"], "purpose": "Nonlinear distortion power spectral distribution"},
+            {"name": "N", "kind": "required", "type": ["numeric", "scalar", "integer", "positive"], "purpose": "Number of subcarriers"},
+            {"name": "M", "kind": "required", "type": ["numeric", "scalar", "positive"], "purpose": "Average power multiplier"}
+        ]
+    }
+}

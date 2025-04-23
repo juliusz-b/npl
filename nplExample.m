@@ -49,7 +49,12 @@ Delta = 0.5;
 % -------------------------------------------------------------------------
 % Call the NPL algorithm
 % -------------------------------------------------------------------------
-[Ak, Pnpl] = npl(G, N0, gamma, S, N, M, Delta);
+tic
+[~, Pnpl] = npl(G, N0, gamma, S, N, M, Delta);
+toc
+tic
+[~, Pnpl2] = npl_opt(G, N0, gamma, S, N, M);
+toc
 
 % -------------------------------------------------------------------------
 % Plot Results
@@ -57,7 +62,10 @@ Delta = 0.5;
 % Plot the final power allocation across subcarriers
 f1 = figure('color','w');
 plot(1:N,Pnpl,'o');
+hold on;
+plot(1:N,Pnpl2,'-','LineWidth',2);
 xlim([1 N])
+legend({'NPL','NPL-OPT'},'Box','off','Location','best')
 title(['N=' num2str(N) ', M=' num2str(M), ', \gamma=', num2str(gamma)])
 xlabel('Subcarrier number [#]')
 ylabel('Allocated power [a.u.]')
