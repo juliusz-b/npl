@@ -56,38 +56,97 @@ Both functions return:
 
 ## Usage Example
 
+The repository includes a ready-to-use example script (`nplExample.m`) that demonstrates both NPL implementations:
+
 ```matlab
-% Define your system parameters
-N = 128;                  % Number of subcarriers
-M = 1;                    % Average power multiplier
-G = channel_response(N);  % Channel response
-N0 = 1e-4;                % Noise spectral density
-gamma = 0.1;              % LED nonlinearity coefficient
-S = distortion_profile(N);% Distortion power distribution
+% Set OFDM bandwidth to 100 MHz
+BW = 100e6;
 
-% For iterative approach
-Delta = 0.001;            % Power increment
-[Ak_iter, P_iter] = npl(G, N0, gamma, S, N, M, Delta);
+% Number of subcarriers
+N = 128;
 
-% For optimization approach
-[Ak_opt, P_opt] = npl_opt(G, N0, gamma, S, N, M);
+% 3 dB cut-off frequency of the LED
+f3dB = 45e6;
 
-% Plot and compare results
-figure;
-subplot(2,1,1);
-plot(1:N, P_iter, 'b-', 1:N, P_opt, 'r--');
-legend('Iterative', 'Optimization');
-title('Power Allocation Comparison');
+% Noise power spectral density
+N0 = 1e-4;
 
-subplot(2,1,2);
-plot(1:N, 10*log10(P_iter./P_opt));
-title('Power Difference (dB)');
-xlabel('Subcarrier Index');
+% Frequency vector
+f = (0:(N-1))/N*BW;
+
+% Channel response modeling (low-pass filter model)
+G = abs(1./(1 + 1i * f / f3dB));
+
+% LED nonlinearity coefficient
+gamma = 1e-11;
+
+% Nonlinear distortion power spectral distribution
+fA = 1e6;
+S = (f3dB^4 * (4*f.^2 + fA^2)) ./ (fA^2 * (4*f.^2 + f3dB^2) .* (f.^2 + f3dB^2));
+S = S / max(S);
+
+% NPL parameters
+M = 40;        % Average power multiplier
+Delta = 0.5;   % Power increment step for iterative method
+
+% Run both NPL implementations
+[~, Pnpl] = npl(G, N0, gamma, S, N, M, Delta);
+[~, Pnpl_opt] = npl_opt(G, N0, gamma, S, N, M);
+
+% Compare results
+figure('color','w');
+plot(1:N, Pnpl, 'o');
+hold on;
+plot(1:N, Pnpl_opt, '-', 'LineWidth', 2);
+xlim([1 N])
+legend({'NPL','NPL-OPT'}, 'Box', 'off', 'Location', 'best')
+title(['N=' num2str(N) ', M=' num2str(M) ', \gamma=' num2str(gamma)])
+xlabel('Subcarrier number [#]')
+ylabel('Allocated power [a.u.]')
 ```
+
+This example creates a simulated low-pass channel response typical for LED-based communication systems, configures the nonlinear distortion model, and applies both NPL algorithms to optimize power allocation.
+
+## Results Comparison
+
+The following figure shows a comparison between the two NPL implementations with parameters N=128, M=40, γ=1e-11:
+
+![Power Allocation Comparison](results/PowerAlloc.png)
+
+The figure demonstrates that both algorithms produce very similar power allocation patterns across subcarriers. The optimization-based approach (NPL-OPT) produces a smoother allocation curve compared to the iterative approach (NPL), while achieving essentially the same power distribution pattern.
+
+## Repository Contents
+
+This repository contains the following key files:
+
+- **npl.m** - Implementation of the iterative Nonlinear Power Loading algorithm
+- **npl_opt.m** - Implementation of the optimization-based NPL algorithm using analytical gradients
+- **nplExample.m** - Example script demonstrating both implementations on a simulated channel
+- **nplVisualization.m** - Script that creates an animated visualization of the NPL algorithm operation
+- **exp_values.mat** - Experimental data from real-world optical wireless communication tests
+
+## Visualization
+
+The repository includes a visualization script (`nplVisualization.m`) that demonstrates the NPL algorithm's operation over time. This script:
+
+1. Loads experimental data from `exp_values.mat`
+2. Runs the NPL algorithm while recording intermediate values
+3. Creates an animated visualization showing:
+   - Capacity calculations for each subcarrier
+   - SINR distribution
+   - Power distribution over iterations
+   - Nonlinear distortion effects
+
+The visualization can be rendered as an MP4 video with synchronized audio cues that indicate when power is allocated to different subcarriers.
 
 ## Citation
 
-TBA
+If you use this code in your research, please cite our paper:
+
+```bibtex
+@article{TBA
+}
+```
 
 ## License
 
