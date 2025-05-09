@@ -141,12 +141,44 @@ The visualization can be rendered as an MP4 video with synchronized audio cues t
 
 ## Citation
 
-If you use this code in your research, please cite our paper:
+If you use this code in your research, please cite our paper (for the original NPL used in OFDM):
 
 ```bibtex
-@article{TBA
+@article{Kasjanowicz2023,
+  title = {Bit and Power Loading Algorithms for Nonlinear Optical Wireless Communication Channels},
+  volume = {27},
+  ISSN = {2373-7891},
+  url = {http://dx.doi.org/10.1109/LCOMM.2023.3332108},
+  DOI = {10.1109/lcomm.2023.3332108},
+  number = {12},
+  journal = {IEEE Communications Letters},
+  publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+  author = {Kasjanowicz,  Jakub and Bojarczuk,  Juliusz and Stepniak,  Grzegorz},
+  year = {2023},
+  month = dec,
+  pages = {3270–3274}
 }
 ```
+
+and
+
+```bibtex
+@article{Kasjanowicz2025,
+  title = {Balancing Noise and Nonlinear Distortion by Power Loading in FBMC OWC},
+  ISSN = {2155-3165},
+  url = {http://dx.doi.org/10.1364/AO.562794},
+  DOI = {10.1364/ao.562794},
+  journal = {Applied Optics},
+  publisher = {Optica Publishing Group},
+  author = {Kasjanowicz,  Jakub and Bojarczuk,  Juliusz and Araszkiewicz,  Piotr and Stepniak,  Grzegorz},
+  year = {2025},
+  month = may 
+}
+
+```
+
+for the NPL used in FBMC.
+
 
 ## License
 
