@@ -159,6 +159,7 @@ If you use this code in your research, please cite our paper (for the original N
   pages = {3270–3274}
 }
 ```
+[![DOI](https://zenodo.org/badge/DOI/10.1109/LCOMM.2023.3332108.svg)](https://doi.org/10.1109/LCOMM.2023.3332108)
 
 and
 
@@ -176,6 +177,7 @@ and
 }
 
 ```
+[![DOI](https://zenodo.org/badge/DOI/10.1364/AO.562794.svg)](https://doi.org/10.1364/AO.562794)
 
 for the NPL used in FBMC.
 
